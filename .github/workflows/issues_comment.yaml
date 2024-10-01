@@ -28,6 +28,9 @@ jobs:
     steps:
       - name: Create comment with API
         run: |
+          echo '${{ORGANIZATION}}'
+          echo '${{REPOSITORY}}'
+          echo '${{ISSUE_NUMBER}}'
           gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
