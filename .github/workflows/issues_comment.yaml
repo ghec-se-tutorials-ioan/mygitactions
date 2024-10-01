@@ -36,9 +36,10 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             /repos/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments \
-            -f "body=Me too"
+            -f "body=Comment but from the API call not action"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # probably the organization is wrong in this case and user.login is actually the user who creates the issue
           ORGANIZATION: ${{ github.event.issue.user.login }}
-          REPOSITORY: ${{ github.event.repository.name }}
+          REPOSITORY: ${{ github.event.repository.full_name }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
